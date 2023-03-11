@@ -16,6 +16,8 @@ class RecognitionOut(BaseModel):
 class DetectionOut(BaseModel):
     box: Tuple[float, float, float, float]
 
+class RecognitionConfidence(BaseModel):
+    confidence: float
 
 class OCROut(RecognitionOut, DetectionOut):
     pass
