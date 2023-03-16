@@ -11,7 +11,9 @@ if any(gpu_devices):
 
 from doctr.models import kie_predictor, ocr_predictor
 
-predictor = ocr_predictor(pretrained=True)
+#predictor = ocr_predictor(pretrained=True)
+predictor = model = ocr_predictor('linknet_resnet18_rotation','crnn_vgg16_bn',pretrained=True,assume_straight_pages=False, preserve_aspect_ratio=True)
+
 det_predictor = predictor.det_predictor
 reco_predictor = predictor.reco_predictor
 kie_predictor = kie_predictor(pretrained=True)
