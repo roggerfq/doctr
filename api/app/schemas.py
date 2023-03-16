@@ -12,12 +12,18 @@ from pydantic import BaseModel, Field
 class RecognitionOut(BaseModel):
     value: str = Field(..., example="Hello")
 
-
 class DetectionOut(BaseModel):
     box: Tuple[float, float, float, float]
 
 class RecognitionConfidence(BaseModel):
     confidence: float
 
-class OCROut(RecognitionOut, DetectionOut):
+class OCROut(RecognitionOut, DetectionOut, RecognitionConfidence):
+    pass
+
+
+class DetectionPolyOut(BaseModel):
+    polygon: Tuple[Tuple[float, float], Tuple[float, float], Tuple[float, float], Tuple[float, float]]
+
+class OCRPolyOut(RecognitionOut, DetectionPolyOut, RecognitionConfidence):
     pass
